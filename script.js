@@ -6,7 +6,7 @@ let scenes = [
      // Opening Dialogue
   { type: "dialogue", 
     text: "The quiz that will tell you the best way to learn English online", 
-    image: "/images/haian.png", maxWidth: "200px", 
+    image: "images/haian.png", maxWidth: "200px", 
     buttonText: "Enter",
     isTitle: true
   },
@@ -185,7 +185,7 @@ function showResult() {
   const topApp = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
   textBox.textContent = `Your best way to learn English online is ... ${topApp}`;
 
-  const IMAGE_DIR = "/images/";
+  const IMAGE_DIR = "images/";
   const appImages = {
     Duolingo:  "duo.png",
     Lingualeo: "ling.png",
