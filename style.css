@@ -1,0 +1,356 @@
+/* ==============================
+Reset & Base
+============================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+    font-family: "Space Mono", monospace;
+}
+
+body {
+    background-image: url('images/background-vector-14.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    min-height: calc(var(--vh, 1vh) * 100);
+}
+
+a:link{
+    color: #4d65b4;
+}
+
+a:visited{
+    color: black;
+}
+/* ==============================
+   Fonts
+============================== */
+@font-face {
+    font-family: 'CHNO Pixel Code Pro';
+    src: url(fonts/CHNOPixelCodePro-Regular.woff);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'CHNO Pixel Code Pro';
+    src: url(fonts/CHNOPixelCodePro-Italic.woff);
+    font-weight: normal;
+    font-style: italic;
+}
+
+/* ==============================
+   Headings & Text
+============================== */
+h1,
+#text-box.title-font,
+.question-font {
+    font-family: 'CHNO Pixel Code Pro', monospace;
+    font-style: italic;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 30px;
+}
+
+#text-box.title-font {
+    font-size: 2em;
+}
+
+.question-font {
+    font-size: 1.5em;
+}
+
+#text-box {
+    font-size: 1.2em;
+    margin: 0 auto 30px auto;
+    max-width: 40%;
+    position: relative;
+    z-index: 1;
+}
+
+#text-box.results-active {
+    color: white;
+    }
+
+/* ==============================
+   Overlay
+============================== */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* ==============================
+   Container
+============================== */
+#container {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    padding-top: 100px;
+    flex: 1 1 auto;
+}
+
+#container.results-active {
+  padding-top: 50px;
+  transition: padding-top 0.3s ease; 
+}
+/* ==============================
+   Buttons - Responsive
+============================== */
+button {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    margin: 0 auto 15px auto;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 99px;
+    border: 1px solid black;
+    display: block;
+    font-family: "Space Mono", monospace;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    /* Default for desktops (large & Retina screens) */
+    width: clamp(200px, 30%, 500px);
+}
+
+/* Hover effect */
+button:hover {
+    background-color: #c7dcd0;
+    color: black;
+}
+
+/* Dialogue / Question variants */
+.dialogue-btn {
+    background-color: black;
+}
+.question-btn {
+    background-color: #313638;
+}
+
+/* ===== Laptops (1025px - 1400px) ===== */
+@media (min-width: 1025px) and (max-width: 1400px) {
+    button {
+        width: clamp(200px, 35%, 450px);
+    }
+}
+
+/* ===== Tablets (769px - 1024px) ===== */
+@media (min-width: 769px) and (max-width: 1024px) {
+    button {
+        width: clamp(160px, 40%, 400px);
+    }
+}
+
+/* ===== Mobile (up to 768px) ===== */
+@media (max-width: 768px) {
+    button {
+        width: 70%;       /* 70% of viewport width */
+        min-width: 140px; 
+        max-width: 300px; 
+    }
+}
+
+/* ==============================
+   Dialogue Scenes & Creator Notes
+============================== */
+.dialogue-scene,
+#text-box.dialogue-scene {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin: 0 auto 30px auto;
+    max-width: 40%;
+}
+
+.creator-note {
+    background: white;
+    border: 2px solid black;
+    padding: 15px;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto 15px auto;
+    max-width: 600px;
+}
+
+/* ==============================
+   Images
+============================== */
+img {
+    max-width: 300px;
+    margin-bottom: 20px;
+}
+
+#text-box.results-active + #buttons button {
+    width: clamp(150px, 25%, 300px); /* smaller than normal buttons */
+    margin: 10px auto;
+}
+
+/* Result image bigger */
+.cat-result {
+    height: auto;
+    display: block;
+    margin: 20px auto 30px auto;
+    max-width: 100%;
+}
+
+
+#image img {
+    width: 100%;
+    height: auto;
+    max-width: inherit;
+    max-height: 100vh;
+}
+
+/* Dialogue images modal */
+#modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#modal-img {
+    max-width: 80%;
+    max-height: 80%;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+#close-modal {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-size: 40px;
+    color: white;
+    font-family: 'CHNO Pixel Code Pro';
+    font-weight: normal;
+    cursor: pointer;
+}
+
+/* ==============================
+   Cat Gallery
+============================== */
+.cat-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
+    gap: 15px;
+    width: min(900px, 80%);
+    margin: 20px auto 40px auto;
+    align-items: flex-end;
+    background: #FFFEF8;
+    padding: 30px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.cat-card {
+    text-align: center;
+}
+
+.cat-card img {
+    width: 150px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: transform 0.2s;
+}
+
+.cat-card img:hover {
+    transform: scale(1.1);
+}
+
+/* ==============================
+   Footer
+============================== */
+footer {
+    text-align: center;
+    padding: 10px 0 30px 0;
+    font-size: 0.8em;
+    color: #333;
+}
+
+/* ==============================
+   Fade-In Animations
+============================== */
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.fade-in.show {
+    opacity: 1;
+}
+
+/* ==============================
+   Media Queries (Mobile / Tablet)
+============================== */
+@media (max-width: 1400px) {
+    .cat-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 70%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Container */
+    #container {
+        padding-top: 50px;
+    }
+
+    /* Text boxes */
+    #text-box,
+    #text-box.dialogue-scene {
+        max-width: 95%;
+        width: 95%;
+    }
+
+    /* Creator notes */
+    #text-box .creator-note {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    /* Dialogue images */
+    #image img {
+        max-width: 90vw;
+        height: auto;
+    }
+
+    /* Cat gallery for mobile */
+    .cat-gallery {
+        grid-template-columns: 1fr;
+        max-width: 90%;
+    }
+}
+
